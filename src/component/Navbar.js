@@ -1,13 +1,12 @@
 import { useContext } from "react";
-import ContextGlobal from "../context";
-
+import { ContextGlobal } from "../utama";
 const Navbar = () => {
   const context = useContext(ContextGlobal);
   return (
     <div className="navbar bg-red-100">
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">
-          {context.name ? context.name : "kamu siapa"}
+          {context.contextState.name ? context.contextState.name : "kamu siapa"}
         </a>
       </div>
       <div className="flex-none">
