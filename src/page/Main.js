@@ -8,13 +8,13 @@ const Main = ({
   isActiveQuestion,
   alreadyAnswerd,
 }) => {
-  useEffect(() => {}, [alreadyAnswerd]);
   return (
     data && (
       <div className="card w-96 h-72 bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <span>Jumlah soal : {lengthQuestion}</span>
-          <span>Sudah dikerjakan : {alreadyAnswerd}</span>
+
+          <span>Sudah dikerjakan :{lengthQuestion - alreadyAnswerd}</span>
 
           <h2 className="card-title"></h2>
 

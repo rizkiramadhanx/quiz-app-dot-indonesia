@@ -7,6 +7,7 @@ const Login = ({}) => {
   let navigate = useNavigate();
   const [user, setUser] = useState();
   const context = useContext(ContextGlobal);
+  const [error, setError] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,7 +30,7 @@ const Login = ({}) => {
 
       return;
     }
-    return console.log("sa");
+    return setError(true);
   };
   return (
     <>
@@ -75,11 +76,9 @@ const Login = ({}) => {
               >
                 Sign In
               </button>
-              <button>
-                <Link to={"/quiz"}>ss</Link>
-              </button>
             </form>
           </div>
+          {error && <span>Kombinasi user dan password salah</span>}
         </div>
       </div>
     </>

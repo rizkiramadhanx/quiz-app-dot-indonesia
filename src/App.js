@@ -13,6 +13,7 @@ function App() {
   const [currentAnswer, setCurrentAnswer] = useState();
   const [alreadyAnswerd, setAlreadyAnswerd] = useState(0);
   const [resultData, setResultData] = useState(null);
+  const [detik, setDetik] = useState(60);
 
   const handleSubmit = () => {
     const dataResult = countResult(data, currentAnswer);
