@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import currentDataFunc from "./utils/currentData";
 import countResult from "./utils/result";
 import countAlreadyAnswerd from "./utils/countAlreadyAnswered";
+import Navbar from "./component/Navbar";
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -46,66 +47,72 @@ function App() {
   }, []);
 
   return (
-    <div className="flex justify-center mt-16">
-      <div className="flex flex-col mt-5">
-        <div className="bg-slate-300 w-96 h-12 rounded-md flex justify-center p-2">
-          <div className="text-xl">DOT Indonesia</div>
-        </div>
-        <div className="flex justify-center mt-5">
-          {data && (
-            <>
-              <Main
-                alreadyAnswerd={alreadyAnswerd}
-                data={data[number]}
-                lengthQuestion={lengthQuestion}
-                isActiveQuestion={currentAnswer[number]}
-                numberQuestion={number + 1}
-                handleQuestion={handleQuestion}
-              />
-            </>
-          )}
-        </div>
-        <div className="flex justify-center mt-5">
-          <button
-            className="btn btn-info"
-            onClick={() => setNumber(number === 0 ? number : number - 1)}
-          >
-            sebelum
-          </button>
+    <div>
+      <Navbar />
 
-          <button
-            className="btn btn-accent ml-3"
-            onClick={() =>
-              setNumber(number === data.length - 1 ? number : number + 1)
-            }
-          >
-            selanjutnya
-          </button>
-          {}
-          <button className="btn btn-warning ml-3">
-            <a href="#my-modal-2" onClick={handleSubmit}>
-              Selesai
-            </a>
-          </button>
-          {resultData && (
-            <div className="modal" id="my-modal-2">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">Congratulations! you got</h3>
-                <h1 className="text-8xl font-semibold text-center">
-                  {resultData.score}
-                </h1>
-                <h3 className="text-center m-3">Dengan rincian :</h3>
-                <h2>Benar : {resultData.true}</h2>
-                <h2>Salah : {resultData.false}</h2>
-                <h2>Tidak dijawab : {resultData.noAnswer}</h2>
-                <div className="modal-action">
-                  <a href="#" className="btn">
-                    Kembali
-                  </a>
+      <div className="flex justify-center mt-16">
+        <div className="flex flex-col mt-5">
+          <div className="bg-slate-300 w-96 h-12 rounded-md flex justify-center p-2">
+            <div className="text-xl">DOT Indonesia</div>
+          </div>
+          <div className="flex justify-center mt-5">
+            {data && (
+              <>
+                <Main
+                  alreadyAnswerd={alreadyAnswerd}
+                  data={data[number]}
+                  lengthQuestion={lengthQuestion}
+                  isActiveQuestion={currentAnswer[number]}
+                  numberQuestion={number + 1}
+                  handleQuestion={handleQuestion}
+                />
+              </>
+            )}
+          </div>
+          <div className="flex justify-center mt-5">
+            <button
+              className="btn btn-info"
+              onClick={() => setNumber(number === 0 ? number : number - 1)}
+            >
+              sebelum
+            </button>
+
+            <button
+              className="btn btn-accent ml-3"
+              onClick={() =>
+                setNumber(number === data.length - 1 ? number : number + 1)
+              }
+            >
+              selanjutnya
+            </button>
+
+            <button className="btn btn-warning ml-3">
+              <a href="#my-modal-2" onClick={handleSubmit}>
+                Selesai
+              </a>
+            </button>
+            {resultData && (
+              <div className="modal" id="my-modal-2">
+                <div className="modal-box">
+                  <h3 className="font-bold text-lg">
+                    Congratulations! you got
+                  </h3>
+                  <h1 className="text-8xl font-semibold text-center">
+                    {resultData.score}
+                  </h1>
+                  <h3 className="text-center m-3">Dengan rincian :</h3>
+                  <h2>Benar : {resultData.true}</h2>
+                  <h2>Salah : {resultData.false}</h2>
+                  <h2>Tidak dijawab : {resultData.noAnswer}</h2>
+                  <div className="modal-action">
+                    <a href="#" className="btn">
+                      Kembali
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
